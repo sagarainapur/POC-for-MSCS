@@ -6,7 +6,7 @@ pipeline{
     stages{
        stage('GetCode'){
             steps{
-                git 'https://github.com/sagarainapur/POC-for-MSCS.git'
+                git branch: 'main', url: 'https://github.com/sagarainapur/POC-for-MSCS.git'
             }
          }        
        stage('Build'){
