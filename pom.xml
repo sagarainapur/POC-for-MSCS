@@ -78,15 +78,16 @@
             <plugin>
               <groupId>org.codehaus.mojo</groupId>
               <artifactId>taglist-maven-plugin</artifactId>
+            </plugin>    
+                   
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>sonar-maven-plugin</artifactId>
+              <version>3.0.2</version>
             </plugin>
+                   
           </reportPlugins>
         </configuration>
-      </plugin>
-             
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.0.2</version>
       </plugin>
     </plugins>
 
@@ -164,6 +165,13 @@
           <artifactId>jetty-maven-plugin</artifactId>
           <version>8.0.0.M1</version>
         </plugin>
+               
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>3.0.2</version>
+        </plugin>
+               
       </plugins>
     </pluginManagement>
   </build>
