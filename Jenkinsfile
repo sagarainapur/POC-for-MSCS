@@ -7,12 +7,12 @@ pipeline{
     
     // This section contains environment variables which are available for use in the pipeline's stages.
     environment {
-	    PATH = "$PATH:/usr/share/maven/bin"
-        region = "us-east-1"
-        docker_repo_uri = "498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages"
+		PATH = "$PATH:/usr/share/maven/bin"
+        	region = "us-east-1"
+        	docker_repo_uri = "498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages"
 		task_def_arn = "arn:aws:ecs:us-east-1:407730735276:task-definition/first-run-task-definition:10"
-        cluster = "CICD"
-        exec_role_arn = "arn:aws:iam::407730735276:role/ecsTaskExecutionRole"
+        	cluster = "CICD"
+        	exec_role_arn = "arn:aws:iam::407730735276:role/ecsTaskExecutionRole"
     }
     
     stages{
