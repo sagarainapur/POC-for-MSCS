@@ -67,7 +67,28 @@ pipeline{
 		
 		   '''
 	      }
-	}    
+	}
+	
+	
+	stage('Tests') {
+	     steps {
+                  sh '''
+		  
+		  echo "Functional Tests"
+		  
+		  '''
+	      }
+	}
+	
+	stage('Depolyment') {
+	     steps {
+                  sh '''
+		  
+		  echo "Docker Swarm Depolyment"
+		  
+		  '''
+	      }
+	}
         
     }
 }
