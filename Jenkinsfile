@@ -50,7 +50,9 @@ pipeline{
                   // Build the Docker image
                   sh '''
 		                
-		              cd vote
+		              cd vote/
+			      
+			      aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 498747127127.dkr.ecr.us-east-1.amazonaws.com
 		
 		              docker build -t ${docker_repo_uri}:latest .
 		
