@@ -10,9 +10,11 @@ pipeline{
 		PATH = "$PATH:/usr/share/maven/bin"
         	region = "us-east-1"
         	docker_repo_uri = "498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages"
-		      task_def_arn = "arn:aws:ecs:us-east-1:407730735276:task-definition/first-run-task-definition:10"
-        	cluster = "CICD"
-        	exec_role_arn = "arn:aws:iam::407730735276:role/ecsTaskExecutionRole"
+	    	docker_image = "498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest"
+	    	
+		//task_def_arn = "arn:aws:ecs:us-east-1:407730735276:task-definition/first-run-task-definition:10"
+        	//cluster = "CICD"
+        	//exec_role_arn = "arn:aws:iam::407730735276:role/ecsTaskExecutionRole"
     }
     
     stages{
@@ -84,7 +86,16 @@ pipeline{
 	     steps {
                   sh '''
 		  
-		  echo "Docker Swarm Depolyment"
+		  echo "----------------------------------------------------
+		  /n
+		  Docker Swarm Depolyment
+		  /n----------------------------------------------------------"
+		  
+		  docker swarm init --advertise-addr 172.31.90.195
+		  
+		  docker info
+		  
+		  docker service create --name vote --replicas=2 $docker_image
 		  
 		  '''
 	      }
