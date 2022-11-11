@@ -39,13 +39,40 @@ pipeline{
                 }
             }
         }
-        
-        stage('Dockerize') {
-		    steps {
-        	    // Get SHA1 of current commit
-        		script {
+       
+	    
+	stage('Dockerize1') {
+	    steps {
+        	   // Get SHA1 of current commit
+		    script {
             		commit_id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
-        		}
+        	    }
+                // Build the Docker image
+                sh ''' 
+		
+		docker build -t ${docker_repo_uri}:${commit_id} .
+		
+                # Get Docker login credentials for ECR
+                aws ecr get-login --no-include-email --region ${region} | sh
+		
+                # Push Docker image
+                docker push ${docker_repo_uri}:${commit_id}
+		
+                #Clean up
+                docker rmi -f ${docker_repo_uri}:${commit_id} 
+		
+		'''
+    	    }
+	}    
+	    
+	    
+	    
+        stage('Dockerizeold') {
+	    steps {
+        	   // Get SHA1 of current commit
+		    script {
+            		commit_id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
+        	    }
                 // Build the Docker image
                 sh "docker build -t ${docker_repo_uri}:${commit_id} ."
                 // Get Docker login credentials for ECR
@@ -55,7 +82,7 @@ pipeline{
                 // Clean up
                 sh "docker rmi -f ${docker_repo_uri}:${commit_id}"
     	    }
-	    }
+	}
         
     }
 }
