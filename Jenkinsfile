@@ -48,7 +48,9 @@ pipeline{
             		commit_id = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()
         	    }
                 // Build the Docker image
-                sh ''' 
+                sh '''
+		
+		cd vote
 		
 		docker build -t ${docker_repo_uri}:${commit_id} .
 		
@@ -59,7 +61,7 @@ pipeline{
                 docker push ${docker_repo_uri}:${commit_id}
 		
                 #Clean up
-                docker rmi -f ${docker_repo_uri}:${commit_id} 
+                #docker rmi -f ${docker_repo_uri}:${commit_id} 
 		
 		'''
     	    }
