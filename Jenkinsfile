@@ -52,16 +52,16 @@ pipeline{
 		                
 		              cd vote
 		
-		              docker build -t ${docker_repo_uri}:${commit_id} .
+		              docker build -t ${docker_repo_uri}:latest .
 		
                   # Get Docker login credentials for ECR
                   aws ecr get-login --no-include-email --region ${region} | sh
 		
                   # Push Docker image
-                  docker push ${docker_repo_uri}:${commit_id}
+                  docker push ${docker_repo_uri}:latest
 		
                   #Clean up
-                  #docker rmi -f ${docker_repo_uri}:${commit_id} 
+                  #docker rmi -f ${docker_repo_uri}:latest
 		
 		              '''
     	      }
