@@ -87,11 +87,12 @@ pipeline{
                   sh '''
 		  
 		  echo "----------------------------------------------------
-		  /n
-		  Docker Swarm Depolyment
-		  /n----------------------------------------------------------"
 		  
-		  docker swarm init --advertise-addr 172.31.90.195
+		  Docker Swarm Depolyment
+		  
+		  ----------------------------------------------------------"
+		  
+		  #docker swarm init --advertise-addr 172.31.90.195
 		  
 		  docker info
 		  
