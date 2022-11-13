@@ -81,6 +81,8 @@ pipeline{
 		  	#sudo apt-get install git -y
 		  	git clone https://github.com/docker/docker-bench-security.git
 		  	cd docker-bench-security
+			rm Dockerfile
+			cp ../vote/Dockerfile .
 		  
 		  	sudo sh docker-bench-security.sh
 		  	#sh docker-bench-security.sh
