@@ -80,7 +80,7 @@ pipeline{
 		  
 		  	#sudo apt-get install git -y
 			
-		  	git clone https://github.com/docker/docker-bench-security.git
+		  	#git clone https://github.com/docker/docker-bench-security.git
 		  	cd docker-bench-security
 			
 			rm Dockerfile
