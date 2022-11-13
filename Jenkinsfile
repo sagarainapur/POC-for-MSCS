@@ -171,6 +171,8 @@ pipeline{
 		  
 		  docker service inspect --pretty vote
 		  
+		  sleep 50
+		  
 		  docker service ps vote
 		  
 		  '''
