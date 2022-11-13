@@ -78,6 +78,9 @@ pipeline{
 		  // Docker Bench for Security
 		  sh '''
 		  
+		  			  
+		  	echo "Docker Security Scans"
+
 		  	#sudo apt-get install git -y
 			
 		  	#git clone https://github.com/docker/docker-bench-security.git
@@ -98,9 +101,11 @@ pipeline{
 		     
 		  // Dive tool
 		  sh '''
-		  	
-			wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
-			sudo apt install ./dive_0.9.2_linux_amd64.deb
+		  			  
+		  	echo "Dive tool scan"
+
+			#wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
+			#sudo apt install ./dive_0.9.2_linux_amd64.deb
 			
 			dive $docker_image > DiveReport
 			
@@ -114,6 +119,8 @@ pipeline{
 		  // Trivy tool
 		  sh '''
 		  
+		  	echo "Trivy tool scan"
+			
 		  	sudo apt-get install wget apt-transport-https gnupg lsb-release
 			wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
 			echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
