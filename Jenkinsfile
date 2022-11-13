@@ -107,7 +107,7 @@ pipeline{
 			#wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
 			#sudo apt install ./dive_0.9.2_linux_amd64.deb
 			
-			dive 498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages > DiveReport
+			#dive 498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages > DiveReport
 			
 			\n
 			cat DiveReport
