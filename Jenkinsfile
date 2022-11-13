@@ -72,6 +72,51 @@ pipeline{
 	}
 	
 	
+	stage('Docker Security Scans') {
+	     steps {
+        	   
+		  // Docker Bench for Security
+		  sh '''
+		  
+		  	sudo apt-get install git -y
+		  	git clone https://github.com/docker/docker-bench-security.git
+		  	cd docker-bench-security
+		  
+		  	sudo sh docker-bench-security.sh
+		  	#sh docker-bench-security.sh
+		
+		   '''
+		     
+		     
+		  // Trivy tool
+		  sh '''
+		  	
+			wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
+			sudo apt install ./dive_0.9.2_linux_amd64.deb
+			
+			dive $docker_image
+			
+		  '''
+		     
+		  
+		  // Dive tool
+		  sh '''
+		  
+		  	sudo apt-get install wget apt-transport-https gnupg lsb-release
+			wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+			echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+			sudo apt-get update
+			sudo apt-get install trivy
+			
+			trivy image $docker_image
+			
+			
+		  '''
+		  
+	      }
+	}
+	
+	
 	stage('Tests') {
 	     steps {
                   sh '''
