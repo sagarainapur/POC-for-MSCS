@@ -79,29 +79,39 @@ pipeline{
 		  sh '''
 		  
 		  	#sudo apt-get install git -y
+			
 		  	git clone https://github.com/docker/docker-bench-security.git
 		  	cd docker-bench-security
+			
 			rm Dockerfile
 			cp ../vote/Dockerfile .
 		  
-		  	sudo sh docker-bench-security.sh
+		  	sudo sh docker-bench-security.sh > DSSReport
 		  	#sh docker-bench-security.sh
+			
+			\n
+			cat DSSReport
+			\n
 		
 		   '''
 		     
 		     
-		  // Trivy tool
+		  // Dive tool
 		  sh '''
 		  	
 			wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
 			sudo apt install ./dive_0.9.2_linux_amd64.deb
 			
-			dive $docker_image
+			dive $docker_image > DiveReport
+			
+			\n
+			cat DiveReport
+			\n
 			
 		  '''
 		     
 		  
-		  // Dive tool
+		  // Trivy tool
 		  sh '''
 		  
 		  	sudo apt-get install wget apt-transport-https gnupg lsb-release
@@ -110,7 +120,12 @@ pipeline{
 			sudo apt-get update
 			sudo apt-get install trivy
 			
-			trivy image $docker_image
+			trivy image $docker_image > TrivyReport
+			
+			
+			\n
+			cat TrivyReport
+			\n
 			
 			
 		  '''
