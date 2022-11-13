@@ -1,0 +1,1550 @@
+Started by user unknown or anonymous
+Obtained Jenkinsfile from git https://github.com/sagarainapur/POC-for-MSCS.git
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/CICD
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/CICD/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/sagarainapur/POC-for-MSCS.git # timeout=10
+Fetching upstream changes from https://github.com/sagarainapur/POC-for-MSCS.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/sagarainapur/POC-for-MSCS.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 6872276d5ba8a6cefe717d0e43adef6c12c41c1e (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 6872276d5ba8a6cefe717d0e43adef6c12c41c1e # timeout=10
+Commit message: "Update Jenkinsfile"
+ > git rev-list --no-walk c04e1f3ce8f252134259f1082e74cc206d5fc9f9 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Tool Install)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (GetCode)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] git
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/CICD/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/sagarainapur/POC-for-MSCS.git # timeout=10
+Fetching upstream changes from https://github.com/sagarainapur/POC-for-MSCS.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.34.1'
+ > git fetch --tags --force --progress -- https://github.com/sagarainapur/POC-for-MSCS.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 6872276d5ba8a6cefe717d0e43adef6c12c41c1e (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 6872276d5ba8a6cefe717d0e43adef6c12c41c1e # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 6872276d5ba8a6cefe717d0e43adef6c12c41c1e # timeout=10
+Commit message: "Update Jenkinsfile"
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Build)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ mvn clean package
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:server:jar:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:webapp:war:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:maven-project:pom:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter. @ line 51, column 24
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.example.maven-project:maven-project:pom:1.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Maven Project                                                      [pom]
+[INFO] Server                                                             [jar]
+[INFO] Webapp                                                             [war]
+[INFO] 
+[INFO] --------------< com.example.maven-project:maven-project >---------------
+[INFO] Building Maven Project 1.0-SNAPSHOT                                [1/3]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ maven-project ---
+[INFO] Deleting /var/lib/jenkins/workspace/CICD/target
+[INFO] 
+[INFO] ------------------< com.example.maven-project:server >------------------
+[INFO] Building Server 1.0-SNAPSHOT                                       [2/3]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ server ---
+[INFO] Deleting /var/lib/jenkins/workspace/CICD/server/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CICD/server/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ server ---
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/CICD/server/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CICD/server/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ server ---
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/CICD/server/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.11:test (default-test) @ server ---
+[INFO] Surefire report directory: /var/lib/jenkins/workspace/CICD/server/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.example.TestGreeter
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.054 sec
+
+Results :
+
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ server ---
+[INFO] Building jar: /var/lib/jenkins/workspace/CICD/server/target/server.jar
+[INFO] 
+[INFO] ------------------< com.example.maven-project:webapp >------------------
+[INFO] Building Webapp 1.0-SNAPSHOT                                       [3/3]
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ webapp ---
+[INFO] Deleting /var/lib/jenkins/workspace/CICD/webapp/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CICD/webapp/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CICD/webapp/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.11:test (default-test) @ webapp ---
+[INFO] No tests to run.
+[INFO] Surefire report directory: /var/lib/jenkins/workspace/CICD/webapp/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-war-plugin:2.2:war (default-war) @ webapp ---
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/var/lib/jenkins/.m2/repository/com/thoughtworks/xstream/xstream/1.3.1/xstream-1.3.1.jar) to field java.util.Properties.defaults
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[INFO] Packaging webapp
+[INFO] Assembling webapp [webapp] in [/var/lib/jenkins/workspace/CICD/webapp/target/webapp]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/var/lib/jenkins/workspace/CICD/webapp/src/main/webapp]
+[INFO] Webapp assembled in [22 msecs]
+[INFO] Building war: /var/lib/jenkins/workspace/CICD/webapp/target/webapp.war
+[INFO] WEB-INF/web.xml already added, skipping
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Maven Project 1.0-SNAPSHOT:
+[INFO] 
+[INFO] Maven Project ...................................... SUCCESS [  0.229 s]
+[INFO] Server ............................................. SUCCESS [  2.825 s]
+[INFO] Webapp ............................................. SUCCESS [  0.675 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.871 s
+[INFO] Finished at: 2022-11-13T13:53:37Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (SonarQube analysis)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: SonarQube-9.7.1
+[Pipeline] {
+[Pipeline] sh
++ mvn clean verify sonar:sonar -Dsonar.projectKey=demo-app -Dsonar.host.url=http://107.22.241.117:9000 -Dsonar.login=******
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:server:jar:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:webapp:war:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:maven-project:pom:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter. @ line 51, column 24
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.example.maven-project:maven-project:pom:1.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Maven Project                                                      [pom]
+[INFO] Server                                                             [jar]
+[INFO] Webapp                                                             [war]
+[INFO] 
+[INFO] --------------< com.example.maven-project:maven-project >---------------
+[INFO] Building Maven Project 1.0-SNAPSHOT                                [1/3]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ maven-project ---
+[INFO] 
+[INFO] ------------------< com.example.maven-project:server >------------------
+[INFO] Building Server 1.0-SNAPSHOT                                       [2/3]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ server ---
+[INFO] Deleting /var/lib/jenkins/workspace/CICD/server/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CICD/server/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ server ---
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/CICD/server/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CICD/server/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ server ---
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/CICD/server/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.11:test (default-test) @ server ---
+[INFO] Surefire report directory: /var/lib/jenkins/workspace/CICD/server/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.example.TestGreeter
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.053 sec
+
+Results :
+
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ server ---
+[INFO] Building jar: /var/lib/jenkins/workspace/CICD/server/target/server.jar
+[INFO] 
+[INFO] ------------------< com.example.maven-project:webapp >------------------
+[INFO] Building Webapp 1.0-SNAPSHOT                                       [3/3]
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ webapp ---
+[INFO] Deleting /var/lib/jenkins/workspace/CICD/webapp/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CICD/webapp/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/CICD/webapp/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.11:test (default-test) @ webapp ---
+[INFO] No tests to run.
+[INFO] Surefire report directory: /var/lib/jenkins/workspace/CICD/webapp/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] 
+[INFO] --- maven-war-plugin:2.2:war (default-war) @ webapp ---
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.thoughtworks.xstream.core.util.Fields (file:/var/lib/jenkins/.m2/repository/com/thoughtworks/xstream/xstream/1.3.1/xstream-1.3.1.jar) to field java.util.Properties.defaults
+WARNING: Please consider reporting this to the maintainers of com.thoughtworks.xstream.core.util.Fields
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[INFO] Packaging webapp
+[INFO] Assembling webapp [webapp] in [/var/lib/jenkins/workspace/CICD/webapp/target/webapp]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/var/lib/jenkins/workspace/CICD/webapp/src/main/webapp]
+[INFO] Webapp assembled in [16 msecs]
+[INFO] Building war: /var/lib/jenkins/workspace/CICD/webapp/target/webapp.war
+[INFO] WEB-INF/web.xml already added, skipping
+[INFO] 
+[INFO] --------------< com.example.maven-project:maven-project >---------------
+[INFO] Building Maven Project 1.0-SNAPSHOT                                [4/3]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- sonar-maven-plugin:3.7.0.1746:sonar (default-cli) @ maven-project ---
+[INFO] User cache: /var/lib/jenkins/.sonar/cache
+[INFO] SonarQube version: 9.7.1.62043
+[INFO] Default locale: "en", source code encoding: "utf-8"
+[INFO] Load global settings
+[INFO] Load global settings (done) | time=150ms
+[INFO] Server id: 147B411E-AYRRwvuQqYJfg1WOKKfD
+[INFO] User cache: /var/lib/jenkins/.sonar/cache
+[INFO] Load/download plugins
+[INFO] Load plugins index
+[INFO] Load plugins index (done) | time=85ms
+[INFO] Load/download plugins (done) | time=360ms
+[INFO] Process project properties
+[INFO] Process project properties (done) | time=12ms
+[INFO] Execute project builders
+[INFO] Execute project builders (done) | time=1ms
+[INFO] Project key: demo-app
+[INFO] Base dir: /var/lib/jenkins/workspace/CICD
+[INFO] Working dir: /var/lib/jenkins/workspace/CICD/target/sonar
+[INFO] Load project settings for component key: 'demo-app'
+[INFO] Load project settings for component key: 'demo-app' (done) | time=24ms
+[INFO] Auto-configuring with CI 'Jenkins'
+[INFO] Load quality profiles
+[INFO] Load quality profiles (done) | time=137ms
+[INFO] Load active rules
+[INFO] Load active rules (done) | time=2001ms
+[INFO] Load analysis cache
+[INFO] Load analysis cache (120 bytes) | time=20ms
+[INFO] Load project repositories
+[INFO] Load project repositories (done) | time=34ms
+[INFO] Indexing files...
+[INFO] Project configuration:
+[INFO] Indexing files of module 'Server'
+[INFO]   Base dir: /var/lib/jenkins/workspace/CICD/server
+[INFO]   Source paths: pom.xml, src/main/java
+[INFO]   Test paths: src/test/java
+[INFO] Indexing files of module 'Webapp'
+[INFO]   Base dir: /var/lib/jenkins/workspace/CICD/webapp
+[INFO]   Source paths: src/main/webapp, pom.xml
+[INFO] Indexing files of module 'Maven Project'
+[INFO]   Base dir: /var/lib/jenkins/workspace/CICD
+[INFO]   Source paths: pom.xml
+[INFO] 7 files indexed
+[INFO] 0 files ignored because of scm ignore settings
+[INFO] Quality profile for java: Sonar way
+[INFO] Quality profile for jsp: Sonar way
+[INFO] Quality profile for xml: Sonar way
+[INFO] ------------- Run sensors on module Webapp
+[INFO] Load metrics repository
+[INFO] Load metrics repository (done) | time=29ms
+[INFO] Sensor JaCoCo XML Report Importer [jacoco]
+[INFO] 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+[INFO] No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+[INFO] Sensor JaCoCo XML Report Importer [jacoco] (done) | time=3ms
+[INFO] Sensor CSS Rules [javascript]
+[INFO] No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+[INFO] Sensor CSS Rules [javascript] (done) | time=0ms
+[INFO] Sensor C# Project Type Information [csharp]
+[INFO] Sensor C# Project Type Information [csharp] (done) | time=2ms
+[INFO] Sensor C# Analysis Log [csharp]
+[INFO] Sensor C# Analysis Log [csharp] (done) | time=32ms
+[INFO] Sensor C# Properties [csharp]
+[INFO] Sensor C# Properties [csharp] (done) | time=0ms
+[INFO] Sensor HTML [web]
+[INFO] Sensor HTML [web] (done) | time=101ms
+[INFO] Sensor XML Sensor [xml]
+[INFO] 2 source files to be analyzed
+[INFO] 2/2 source files have been analyzed
+[INFO] Sensor XML Sensor [xml] (done) | time=305ms
+[INFO] Sensor Text Sensor [text]
+[INFO] 3 source files to be analyzed
+[INFO] 3/3 source files have been analyzed
+[INFO] Sensor Text Sensor [text] (done) | time=9ms
+[INFO] Sensor VB.NET Project Type Information [vbnet]
+[INFO] Sensor VB.NET Project Type Information [vbnet] (done) | time=2ms
+[INFO] Sensor VB.NET Analysis Log [vbnet]
+[INFO] Sensor VB.NET Analysis Log [vbnet] (done) | time=61ms
+[INFO] Sensor VB.NET Properties [vbnet]
+[INFO] Sensor VB.NET Properties [vbnet] (done) | time=0ms
+[INFO] ------------- Run sensors on module Server
+[INFO] Sensor JavaSensor [java]
+[INFO] Configured Java source version (sonar.java.source): 6
+[INFO] JavaClasspath initialization
+[INFO] JavaClasspath initialization (done) | time=2ms
+[INFO] JavaTestClasspath initialization
+[INFO] JavaTestClasspath initialization (done) | time=1ms
+[INFO] Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[INFO] Using ECJ batch to parse 1 Main java source files with batch size 51 KB.
+[INFO] Starting batch processing.
+[INFO] The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[INFO] Using ECJ batch to parse 1 Test java source files with batch size 51 KB.
+[INFO] Starting batch processing.
+[INFO] 100% analyzed
+[INFO] Batch processing: Done.
+[INFO] Did not optimize analysis for any files, performed a full analysis for all 1 files.
+[INFO] No "Generated" source files to scan.
+[INFO] Sensor JavaSensor [java] (done) | time=1538ms
+[INFO] Sensor JaCoCo XML Report Importer [jacoco]
+[INFO] 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+[INFO] No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+[INFO] Sensor JaCoCo XML Report Importer [jacoco] (done) | time=0ms
+[INFO] Sensor CSS Rules [javascript]
+[INFO] No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+[INFO] Sensor CSS Rules [javascript] (done) | time=0ms
+[INFO] Sensor C# Project Type Information [csharp]
+[INFO] Sensor C# Project Type Information [csharp] (done) | time=0ms
+[INFO] Sensor C# Analysis Log [csharp]
+[INFO] Sensor C# Analysis Log [csharp] (done) | time=0ms
+[INFO] Sensor C# Properties [csharp]
+[INFO] Sensor C# Properties [csharp] (done) | time=0ms
+[INFO] Sensor SurefireSensor [java]
+[INFO] parsing [/var/lib/jenkins/workspace/CICD/server/target/surefire-reports]
+[INFO] Sensor SurefireSensor [java] (done) | time=72ms
+[INFO] Sensor HTML [web]
+[INFO] Sensor HTML [web] (done) | time=1ms
+[INFO] Sensor XML Sensor [xml]
+[INFO] 1 source file to be analyzed
+[INFO] 1/1 source file has been analyzed
+[INFO] Sensor XML Sensor [xml] (done) | time=27ms
+[INFO] Sensor Text Sensor [text]
+[INFO] 3 source files to be analyzed
+[INFO] 3/3 source files have been analyzed
+[INFO] Sensor Text Sensor [text] (done) | time=3ms
+[INFO] Sensor VB.NET Project Type Information [vbnet]
+[INFO] Sensor VB.NET Project Type Information [vbnet] (done) | time=0ms
+[INFO] Sensor VB.NET Analysis Log [vbnet]
+[INFO] Sensor VB.NET Analysis Log [vbnet] (done) | time=1ms
+[INFO] Sensor VB.NET Properties [vbnet]
+[INFO] Sensor VB.NET Properties [vbnet] (done) | time=0ms
+[INFO] ------------- Run sensors on module Maven Project
+[INFO] Sensor JaCoCo XML Report Importer [jacoco]
+[INFO] 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+[INFO] No report imported, no coverage information will be imported by JaCoCo XML Report Importer
+[INFO] Sensor JaCoCo XML Report Importer [jacoco] (done) | time=1ms
+[INFO] Sensor CSS Rules [javascript]
+[INFO] No CSS, PHP, HTML or VueJS files are found in the project. CSS analysis is skipped.
+[INFO] Sensor CSS Rules [javascript] (done) | time=1ms
+[INFO] Sensor C# Project Type Information [csharp]
+[INFO] Sensor C# Project Type Information [csharp] (done) | time=0ms
+[INFO] Sensor C# Analysis Log [csharp]
+[INFO] Sensor C# Analysis Log [csharp] (done) | time=0ms
+[INFO] Sensor C# Properties [csharp]
+[INFO] Sensor C# Properties [csharp] (done) | time=0ms
+[INFO] Sensor HTML [web]
+[INFO] Sensor HTML [web] (done) | time=1ms
+[INFO] Sensor XML Sensor [xml]
+[INFO] 1 source file to be analyzed
+[INFO] 1/1 source file has been analyzed
+[INFO] Sensor XML Sensor [xml] (done) | time=44ms
+[INFO] Sensor Text Sensor [text]
+[INFO] 1 source file to be analyzed
+[INFO] 1/1 source file has been analyzed
+[INFO] Sensor Text Sensor [text] (done) | time=8ms
+[INFO] Sensor VB.NET Project Type Information [vbnet]
+[INFO] Sensor VB.NET Project Type Information [vbnet] (done) | time=0ms
+[INFO] Sensor VB.NET Analysis Log [vbnet]
+[INFO] Sensor VB.NET Analysis Log [vbnet] (done) | time=0ms
+[INFO] Sensor VB.NET Properties [vbnet]
+[INFO] Sensor VB.NET Properties [vbnet] (done) | time=0ms
+[INFO] ------------- Run sensors on project
+[INFO] Sensor Analysis Warnings import [csharp]
+[INFO] Sensor Analysis Warnings import [csharp] (done) | time=1ms
+[INFO] Sensor Zero Coverage Sensor
+[INFO] Sensor Zero Coverage Sensor (done) | time=10ms
+[INFO] Sensor Java CPD Block Indexer
+[INFO] Sensor Java CPD Block Indexer (done) | time=15ms
+[INFO] CPD Executor 2 files had no CPD blocks
+[INFO] CPD Executor Calculating CPD for 0 files
+[INFO] CPD Executor CPD calculation finished (done) | time=0ms
+[INFO] Analysis report generated in 206ms, dir size=144.6 kB
+[INFO] Analysis report compressed in 52ms, zip size=27.9 kB
+[INFO] Analysis report uploaded in 44ms
+[INFO] ANALYSIS SUCCESSFUL, you can find the results at: http://107.22.241.117:9000/dashboard?id=demo-app
+[INFO] Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[INFO] More about the report processing at http://107.22.241.117:9000/api/ce/task?id=AYRxRKE8FzVolQ_9m8vo
+[INFO] Analysis total time: 9.460 s
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Maven Project 1.0-SNAPSHOT:
+[INFO] 
+[INFO] Maven Project ...................................... SUCCESS [ 12.006 s]
+[INFO] Server ............................................. SUCCESS [  1.698 s]
+[INFO] Webapp ............................................. SUCCESS [  0.560 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  14.876 s
+[INFO] Finished at: 2022-11-13T13:53:54Z
+[INFO] ------------------------------------------------------------------------
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Dockerize)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] script
+[Pipeline] {
+[Pipeline] sh
++ git rev-parse --short HEAD
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] sh
++ cd vote/
++ docker build -t 498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest .
+Sending build context to Docker daemon  161.3kB
+
+Step 1/8 : FROM python:3.9-slim
+ ---> f550e60adaa9
+Step 2/8 : RUN apt-get update     && apt-get install -y --no-install-recommends     curl     && rm -rf /var/lib/apt/lists/*
+ ---> Using cache
+ ---> e1c9b5b172a7
+Step 3/8 : WORKDIR /app
+ ---> Using cache
+ ---> 4eb27c77dc6e
+Step 4/8 : COPY requirements.txt /app/requirements.txt
+ ---> Using cache
+ ---> 5c6dffbcddff
+Step 5/8 : RUN pip install -r requirements.txt
+ ---> Using cache
+ ---> 3fda6fc1a0fa
+Step 6/8 : COPY . .
+ ---> Using cache
+ ---> a286ee8c0fc3
+Step 7/8 : EXPOSE 80
+ ---> Using cache
+ ---> 3d1b8839af33
+Step 8/8 : CMD ["gunicorn", "app:app", "-b", "0.0.0.0:80", "--log-file", "-", "--access-logfile", "-", "--workers", "4", "--keep-alive", "0"]
+ ---> Using cache
+ ---> 727b0735b260
+Successfully built 727b0735b260
+Successfully tagged 498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest
++ aws ecr get-login --no-include-email --region us-east-1
++ sh
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /var/lib/jenkins/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
++ docker push 498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest
+The push refers to repository [498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages]
+d5e097f6e751: Preparing
+1b8dccb35fa8: Preparing
+82bae869e3ea: Preparing
+c14ecd95a949: Preparing
+9f23e619d9c2: Preparing
+466ee1641be0: Preparing
+150de0b737bd: Preparing
+00c1be188a46: Preparing
+5772b8372e59: Preparing
+a12586ed027f: Preparing
+466ee1641be0: Waiting
+150de0b737bd: Waiting
+00c1be188a46: Waiting
+5772b8372e59: Waiting
+a12586ed027f: Waiting
+9f23e619d9c2: Layer already exists
+d5e097f6e751: Layer already exists
+1b8dccb35fa8: Layer already exists
+c14ecd95a949: Layer already exists
+82bae869e3ea: Layer already exists
+466ee1641be0: Layer already exists
+150de0b737bd: Layer already exists
+00c1be188a46: Layer already exists
+a12586ed027f: Layer already exists
+5772b8372e59: Layer already exists
+latest: digest: sha256:29eb27b767bdf89010a1c85715bab75b9a1f85ba379cf9a42783c48e866bbdab size: 2414
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Docker Security Scans)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ echo Docker Security Scans
+Docker Security Scans
++ cd docker-bench-security
++ rm Dockerfile
++ cp ../vote/Dockerfile .
++ sudo sh docker-bench-security.sh
++ cat DSSReport
+[1;33m# --------------------------------------------------------------------------------------------
+# Docker Bench for Security v1.3.6
+#
+# Docker, Inc. (c) 2015-2022
+#
+# Checks for dozens of common best-practices around deploying Docker containers in production.
+# Based on the CIS Docker Benchmark 1.4.0.
+# --------------------------------------------------------------------------------------------[0m
+
+Initializing 2022-11-13T13:53:59+00:00
+
+
+[1;33mSection A - Check results[0m
+
+[1;34m[INFO][0m 1 - Host Configuration
+[1;34m[INFO][0m 1.1 - Linux Hosts Specific Configuration
+[1;31m[WARN][0m 1.1.1 - Ensure a separate partition for containers has been created (Automated)
+[1;34m[INFO][0m 1.1.2 - Ensure only trusted users are allowed to control Docker daemon (Automated)
+[1;34m[INFO][0m       * Users: ubuntu,jenkins
+[1;31m[WARN][0m 1.1.3 - Ensure auditing is configured for the Docker daemon (Automated)
+[1;31m[WARN][0m 1.1.4 - Ensure auditing is configured for Docker files and directories -/run/containerd (Automated)
+[1;31m[WARN][0m 1.1.5 - Ensure auditing is configured for Docker files and directories - /var/lib/docker (Automated)
+[1;31m[WARN][0m 1.1.6 - Ensure auditing is configured for Docker files and directories - /etc/docker (Automated)
+[1;31m[WARN][0m 1.1.7 - Ensure auditing is configured for Docker files and directories - docker.service (Automated)
+[1;34m[INFO][0m 1.1.8 - Ensure auditing is configured for Docker files and directories - containerd.sock (Automated)
+[1;34m[INFO][0m        * File not found
+[1;31m[WARN][0m 1.1.9 - Ensure auditing is configured for Docker files and directories - docker.socket (Automated)
+[1;34m[INFO][0m 1.1.10 - Ensure auditing is configured for Docker files and directories - /etc/default/docker (Automated)
+[1;34m[INFO][0m        * File not found
+[1;34m[INFO][0m 1.1.11 - Ensure auditing is configured for Dockerfiles and directories - /etc/docker/daemon.json (Automated)
+[1;34m[INFO][0m        * File not found
+[1;34m[INFO][0m 1.1.12 - 1.1.12 Ensure auditing is configured for Dockerfiles and directories - /etc/containerd/config.toml (Automated)
+[1;34m[INFO][0m        * File not found
+[1;34m[INFO][0m 1.1.13 - Ensure auditing is configured for Docker files and directories - /etc/sysconfig/docker (Automated)
+[1;34m[INFO][0m        * File not found
+[1;31m[WARN][0m 1.1.14 - Ensure auditing is configured for Docker files and directories - /usr/bin/containerd (Automated)
+[1;31m[WARN][0m 1.1.15 - Ensure auditing is configured for Docker files and directories - /usr/bin/containerd-shim (Automated)
+[1;31m[WARN][0m 1.1.16 - Ensure auditing is configured for Docker files and directories - /usr/bin/containerd-shim-runc-v1 (Automated)
+[1;31m[WARN][0m 1.1.17 - Ensure auditing is configured for Docker files and directories - /usr/bin/containerd-shim-runc-v2 (Automated)
+[1;34m[INFO][0m 1.1.18 - Ensure auditing is configured for Docker files and directories - /usr/bin/runc (Automated)
+[1;34m[INFO][0m         * File not found
+[1;34m[INFO][0m 1.2 - General Configuration
+[1;33m[NOTE][0m 1.2.1 - Ensure the container host has been Hardened (Manual)
+[1;32m[PASS][0m 1.2.2 - Ensure that the version of Docker is up to date (Manual)
+[1;34m[INFO][0m        * Using 20.10.12, verify is it up to date as deemed necessary
+
+[1;34m[INFO][0m 2 - Docker daemon configuration
+[1;33m[NOTE][0m 2.1 - Run the Docker daemon as a non-root user, if possible (Manual)
+[1;31m[WARN][0m 2.2 - Ensure network traffic is restricted between containers on the default bridge (Scored)
+[1;32m[PASS][0m 2.3 - Ensure the logging level is set to 'info' (Scored)
+[1;32m[PASS][0m 2.4 - Ensure Docker is allowed to make changes to iptables (Scored)
+[1;32m[PASS][0m 2.5 - Ensure insecure registries are not used (Scored)
+[1;32m[PASS][0m 2.6 - Ensure aufs storage driver is not used (Scored)
+[1;34m[INFO][0m 2.7 - Ensure TLS authentication for Docker daemon is configured (Scored)
+[1;34m[INFO][0m      * Docker daemon not listening on TCP
+[1;34m[INFO][0m 2.8 - Ensure the default ulimit is configured appropriately (Manual)
+[1;34m[INFO][0m      * Default ulimit doesn't appear to be set
+[1;31m[WARN][0m 2.9 - Enable user namespace support (Scored)
+[1;32m[PASS][0m 2.10 - Ensure the default cgroup usage has been confirmed (Scored)
+[1;32m[PASS][0m 2.11 - Ensure base device size is not changed until needed (Scored)
+[1;31m[WARN][0m 2.12 - Ensure that authorization for Docker client commands is enabled (Scored)
+[1;31m[WARN][0m 2.13 - Ensure centralized and remote logging is configured (Scored)
+[1;31m[WARN][0m 2.14 - Ensure containers are restricted from acquiring new privileges (Scored)
+[1;32m[PASS][0m 2.15 - Ensure live restore is enabled (Scored) (Incompatible with swarm mode)
+[1;31m[WARN][0m 2.16 - Ensure Userland Proxy is Disabled (Scored)
+[1;32m[PASS][0m 2.17 - Ensure that a daemon-wide custom seccomp profile is applied if appropriate (Manual)
+[1;34m[INFO][0m Ensure that experimental features are not implemented in production (Scored) (Deprecated)
+
+[1;34m[INFO][0m 3 - Docker daemon configuration files
+[1;32m[PASS][0m 3.1 - Ensure that the docker.service file ownership is set to root:root (Automated)
+[1;32m[PASS][0m 3.2 - Ensure that docker.service file permissions are appropriately set (Automated)
+[1;32m[PASS][0m 3.3 - Ensure that docker.socket file ownership is set to root:root (Automated)
+[1;32m[PASS][0m 3.4 - Ensure that docker.socket file permissions are set to 644 or more restrictive (Automated)
+[1;32m[PASS][0m 3.5 - Ensure that the /etc/docker directory ownership is set to root:root (Automated)
+[1;32m[PASS][0m 3.6 - Ensure that /etc/docker directory permissions are set to 755 or more restrictively (Automated)
+[1;34m[INFO][0m 3.7 - Ensure that registry certificate file ownership is set to root:root (Automated)
+[1;34m[INFO][0m      * Directory not found
+[1;34m[INFO][0m 3.8 - Ensure that registry certificate file permissions are set to 444 or more restrictively (Automated)
+[1;34m[INFO][0m      * Directory not found
+[1;34m[INFO][0m 3.9 - Ensure that TLS CA certificate file ownership is set to root:root (Automated)
+[1;34m[INFO][0m      * No TLS CA certificate found
+[1;34m[INFO][0m 3.10 - Ensure that TLS CA certificate file permissions are set to 444 or more restrictively (Automated)
+[1;34m[INFO][0m       * No TLS CA certificate found
+[1;34m[INFO][0m 3.11 - Ensure that Docker server certificate file ownership is set to root:root (Automated)
+[1;34m[INFO][0m       * No TLS Server certificate found
+[1;34m[INFO][0m 3.12 - Ensure that the Docker server certificate file permissions are set to 444 or more restrictively (Automated)
+[1;34m[INFO][0m       * No TLS Server certificate found
+[1;34m[INFO][0m 3.13 - Ensure that the Docker server certificate key file ownership is set to root:root (Automated)
+[1;34m[INFO][0m       * No TLS Key found
+[1;34m[INFO][0m 3.14 - Ensure that the Docker server certificate key file permissions are set to 400 (Automated)
+[1;34m[INFO][0m       * No TLS Key found
+[1;32m[PASS][0m 3.15 - Ensure that the Docker socket file ownership is set to root:docker (Automated)
+[1;32m[PASS][0m 3.16 - Ensure that the Docker socket file permissions are set to 660 or more restrictively (Automated)
+[1;34m[INFO][0m 3.17 - Ensure that the daemon.json file ownership is set to root:root (Automated)
+[1;34m[INFO][0m       * File not found
+[1;34m[INFO][0m 3.18 - Ensure that daemon.json file permissions are set to 644 or more restrictive (Automated)
+[1;34m[INFO][0m       * File not found
+[1;34m[INFO][0m 3.19 - Ensure that the /etc/default/docker file ownership is set to root:root (Automated)
+[1;34m[INFO][0m       * File not found
+[1;34m[INFO][0m 3.20 - Ensure that the /etc/sysconfig/docker file permissions are set to 644 or more restrictively (Automated)
+[1;34m[INFO][0m       * File not found
+[1;34m[INFO][0m 3.21 - Ensure that the /etc/sysconfig/docker file ownership is set to root:root (Automated)
+[1;34m[INFO][0m       * File not found
+[1;34m[INFO][0m 3.22 - Ensure that the /etc/default/docker file permissions are set to 644 or more restrictively (Automated)
+[1;34m[INFO][0m       * File not found
+[1;32m[PASS][0m 3.23 - Ensure that the Containerd socket file ownership is set to root:root (Automated)
+[1;32m[PASS][0m 3.24 - Ensure that the Containerd socket file permissions are set to 660 or more restrictively (Automated)
+
+[1;34m[INFO][0m 4 - Container Images and Build File
+[1;31m[WARN][0m 4.1 - Ensure that a user for the container has been created (Automated)
+[1;31m[WARN][0m      * Running as root: sonarqube
+[1;31m[WARN][0m      * Running as root: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;31m[WARN][0m      * Running as root: vote.2.r109a60e3pq74z8lqyododsvp
+[1;33m[NOTE][0m 4.2 - Ensure that containers use only trusted base images (Manual)
+[1;33m[NOTE][0m 4.3 - Ensure that unnecessary packages are not installed in the container (Manual)
+[1;33m[NOTE][0m 4.4 - Ensure images are scanned and rebuilt to include security patches (Manual)
+[1;31m[WARN][0m 4.5 - Ensure Content trust for Docker is Enabled (Automated)
+[1;31m[WARN][0m 4.6 - Ensure that HEALTHCHECK instructions have been added to container images (Automated)
+[1;31m[WARN][0m      * No Healthcheck found: [498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [sonarqube:latest]
+[1;31m[WARN][0m      * No Healthcheck found: [python:3.9-slim]
+[1;34m[INFO][0m 4.7 - Ensure update instructions are not used alone in the Dockerfile (Manual)
+[1;34m[INFO][0m      * Update instruction found: [498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest]
+[1;34m[INFO][0m      * Update instruction found: [python:3.9-slim]
+[1;33m[NOTE][0m 4.8 - Ensure setuid and setgid permissions are removed (Manual)
+[1;32m[PASS][0m 4.9 - Ensure that COPY is used instead of ADD in Dockerfiles (Manual)
+[1;33m[NOTE][0m 4.10 - Ensure secrets are not stored in Dockerfiles (Manual)
+[1;33m[NOTE][0m 4.11 - Ensure only verified packages are installed (Manual)
+[1;33m[NOTE][0m 4.12 - Ensure all signed artifacts are validated (Manual)
+
+[1;34m[INFO][0m 5 - Container Runtime
+[1;32m[PASS][0m 5.1 - Ensure that, if applicable, an AppArmor Profile is enabled (Automated)
+[1;31m[WARN][0m 5.2 - Ensure that, if applicable, SELinux security options are set (Automated)
+[1;31m[WARN][0m      * No SecurityOptions Found: sonarqube
+[1;31m[WARN][0m      * No SecurityOptions Found: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;31m[WARN][0m      * No SecurityOptions Found: vote.2.r109a60e3pq74z8lqyododsvp
+[1;32m[PASS][0m 5.3 - Ensure that Linux kernel capabilities are restricted within containers (Automated)
+[1;32m[PASS][0m 5.4 - Ensure that privileged containers are not used (Automated)
+[1;32m[PASS][0m 5.5 - Ensure sensitive host system directories are not mounted on containers (Automated)
+[1;32m[PASS][0m 5.6 - Ensure sshd is not run within containers (Automated)
+[1;32m[PASS][0m 5.7 - Ensure privileged ports are not mapped within containers (Automated)
+[1;31m[WARN][0m 5.8 - Ensure that only needed ports are open on the container (Manual)
+[1;31m[WARN][0m      * Port in use: 9000 in sonarqube
+[1;31m[WARN][0m      * Port in use: 9092 in sonarqube
+[1;32m[PASS][0m 5.9 - Ensure that the host's network namespace is not shared (Automated)
+[1;31m[WARN][0m 5.10 - Ensure that the memory usage for containers is limited (Automated)
+[1;31m[WARN][0m       * Container running without memory restrictions: sonarqube
+[1;31m[WARN][0m       * Container running without memory restrictions: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;31m[WARN][0m       * Container running without memory restrictions: vote.2.r109a60e3pq74z8lqyododsvp
+[1;31m[WARN][0m 5.11 - Ensure that CPU priority is set appropriately on containers (Automated)
+[1;31m[WARN][0m       * Container running without CPU restrictions: sonarqube
+[1;31m[WARN][0m       * Container running without CPU restrictions: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;31m[WARN][0m       * Container running without CPU restrictions: vote.2.r109a60e3pq74z8lqyododsvp
+[1;31m[WARN][0m 5.12 - Ensure that the container's root filesystem is mounted as read only (Automated)
+[1;31m[WARN][0m       * Container running with root FS mounted R/W: sonarqube
+[1;31m[WARN][0m       * Container running with root FS mounted R/W: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;31m[WARN][0m       * Container running with root FS mounted R/W: vote.2.r109a60e3pq74z8lqyododsvp
+[1;31m[WARN][0m 5.13 - Ensure that incoming container traffic is bound to a specific host interface (Automated)
+[1;31m[WARN][0m       * Port being bound to wildcard IP: 0.0.0.0 in sonarqube
+[1;31m[WARN][0m       * Port being bound to wildcard IP: 0.0.0.0 in sonarqube
+[1;31m[WARN][0m 5.14 - Ensure that the 'on-failure' container restart policy is set to '5' (Automated)
+[1;31m[WARN][0m       * MaximumRetryCount is not set to 5: sonarqube
+[1;31m[WARN][0m       * MaximumRetryCount is not set to 5: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;31m[WARN][0m       * MaximumRetryCount is not set to 5: vote.2.r109a60e3pq74z8lqyododsvp
+[1;32m[PASS][0m 5.15 - Ensure that the host's process namespace is not shared (Automated)
+[1;32m[PASS][0m 5.16 - Ensure that the host's IPC namespace is not shared (Automated)
+[1;32m[PASS][0m 5.17 - Ensure that host devices are not directly exposed to containers (Manual)
+[1;34m[INFO][0m 5.18 - Ensure that the default ulimit is overwritten at runtime if needed (Manual)
+[1;34m[INFO][0m       * Container no default ulimit override: sonarqube
+[1;34m[INFO][0m       * Container no default ulimit override: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;34m[INFO][0m       * Container no default ulimit override: vote.2.r109a60e3pq74z8lqyododsvp
+[1;32m[PASS][0m 5.19 - Ensure mount propagation mode is not set to shared (Automated)
+[1;32m[PASS][0m 5.20 - Ensure that the host's UTS namespace is not shared (Automated)
+[1;32m[PASS][0m 5.21 - Ensure the default seccomp profile is not Disabled (Automated)
+[1;33m[NOTE][0m 5.22 - Ensure that docker exec commands are not used with the privileged option (Automated)
+[1;33m[NOTE][0m 5.23 - Ensure that docker exec commands are not used with the user=root option (Manual)
+[1;32m[PASS][0m 5.24 - Ensure that cgroup usage is confirmed (Automated)
+[1;31m[WARN][0m 5.25 - Ensure that the container is restricted from acquiring additional privileges (Automated)
+[1;31m[WARN][0m       * Privileges not restricted: sonarqube
+[1;31m[WARN][0m       * Privileges not restricted: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;31m[WARN][0m       * Privileges not restricted: vote.2.r109a60e3pq74z8lqyododsvp
+[1;31m[WARN][0m 5.26 - Ensure that container health is checked at runtime (Automated)
+[1;31m[WARN][0m       * Health check not set: sonarqube
+[1;31m[WARN][0m       * Health check not set: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;31m[WARN][0m       * Health check not set: vote.2.r109a60e3pq74z8lqyododsvp
+[1;34m[INFO][0m 5.27 - Ensure that Docker commands always make use of the latest version of their image (Manual)
+[1;31m[WARN][0m 5.28 - Ensure that the PIDs cgroup limit is used (Automated)
+[1;31m[WARN][0m       * PIDs limit not set: sonarqube
+[1;31m[WARN][0m       * PIDs limit not set: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;31m[WARN][0m       * PIDs limit not set: vote.2.r109a60e3pq74z8lqyododsvp
+[1;34m[INFO][0m 5.29 - Ensure that Docker's default bridge 'docker0' is not used (Manual)
+[1;34m[INFO][0m       * Container in docker0 network: sonarqube
+[1;34m[INFO][0m       * Container in docker0 network: vote.2.r109a60e3pq74z8lqyododsvp
+[1;34m[INFO][0m       * Container in docker0 network: vote.1.m213qrpy77h1eazpd7bw4qeol
+[1;32m[PASS][0m 5.30 - Ensure that the host's user namespaces are not shared (Automated)
+[1;32m[PASS][0m 5.31 - Ensure that the Docker socket is not mounted inside any containers (Automated)
+
+[1;34m[INFO][0m 6 - Docker Security Operations
+[1;34m[INFO][0m 6.1 - Ensure that image sprawl is avoided (Manual)
+[1;34m[INFO][0m      * There are currently: 3 images
+[1;34m[INFO][0m      * Only 0 out of 3 are in use
+[1;34m[INFO][0m 6.2 - Ensure that container sprawl is avoided (Manual)
+[1;34m[INFO][0m      * There are currently a total of 3 containers, with 3 of them currently running
+
+[1;34m[INFO][0m 7 - Docker Swarm Configuration
+[1;31m[WARN][0m 7.1 - Ensure swarm mode is not Enabled, if not needed (Automated)
+[1;32m[PASS][0m 7.2 - Ensure that the minimum number of manager nodes have been created in a swarm (Automated)
+[1;31m[WARN][0m 7.3 - Ensure that swarm services are bound to a specific host interface (Automated)
+[1;31m[WARN][0m 7.4 - Ensure that all Docker swarm overlay networks are encrypted (Automated)
+[1;31m[WARN][0m      * Unencrypted overlay network: ingress (swarm)
+[1;34m[INFO][0m 7.5 - Ensure that Docker's secret management commands are used for managing secrets in a swarm cluster (Manual)
+[1;31m[WARN][0m 7.6 - Ensure that swarm manager is run in auto-lock mode (Automated)
+[1;33m[NOTE][0m 7.7 - Ensure that the swarm manager auto-lock key is rotated periodically (Manual)
+[1;34m[INFO][0m 7.8 - Ensure that node certificates are rotated as appropriate (Manual)
+[1;34m[INFO][0m 7.9 - Ensure that CA certificates are rotated as appropriate (Manual)
+[1;34m[INFO][0m 7.10 - Ensure that management plane traffic is separated from data plane traffic (Manual)
+
+
+[1;33mSection C - Score[0m
+
+[1;34m[INFO][0m Checks: 117
+[1;34m[INFO][0m Score: -1
+
+[Pipeline] sh
++ echo Dive tool scan
+Dive tool scan
++ cat DiveReport
+  Using default CI config
+[1mImage Source: [0mdocker://498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages
+[1mFetching image...[0m (this can take a while for large images)
+[1mAnalyzing image...[0m
+  efficiency: 95.6393 %
+  wastedBytes: 8126897 bytes (8.1 MB)
+  userWastedPercent: 12.6205 %
+[1mInefficient Files:[0m
+Count  Wasted Space  File Path
+    5        4.0 MB  /var/cache/debconf/templates.dat
+    3        2.4 MB  /var/cache/debconf/templates.dat-old
+    5        447 kB  /var/lib/dpkg/status
+    5        446 kB  /var/lib/dpkg/status-old
+    4        363 kB  /var/log/dpkg.log
+    4        138 kB  /var/log/apt/term.log
+    2         82 kB  /var/lib/dpkg/info/perl-base.list
+    5         68 kB  /var/cache/debconf/config.dat
+    4         32 kB  /var/log/apt/history.log
+    5         30 kB  /var/log/apt/eipp.log.xz
+    4         29 kB  /etc/ld.so.cache
+    5         26 kB  /var/lib/apt/extended_states
+    3         26 kB  /var/cache/debconf/config.dat-old
+    3         18 kB  /var/cache/ldconfig/aux-cache
+    2         423 B  /root/.wget-hsts
+    2          42 B  /app/requirements.txt
+    2           0 B  /var/lib/dpkg/triggers/Unincorp
+    5           0 B  /var/lib/dpkg/triggers/Lock
+    5           0 B  /tmp
+    2           0 B  /etc/systemd/user
+    5           0 B  /var/lib/dpkg/lock-frontend
+    5           0 B  /var/lib/dpkg/lock
+    5           0 B  /var/lib/apt/lists
+    2           0 B  /usr/include
+    2           0 B  /usr/src
+    4           0 B  /var/cache/apt/archives/lock
+    5           0 B  /var/cache/debconf/passwords.dat
+    4           0 B  /var/cache/apt/archives/partial
+    2           0 B  /usr/bin
+    5           0 B  /var/lib/dpkg/updates
+[1mResults:[0m
+  [1;7;31mFAIL[0m: highestUserWastedPercent: too many bytes wasted, relative to the user bytes added (%-user-wasted-bytes=0.126204725325064 > threshold=0.1)
+  [34mSKIP[0m: highestWastedBytes: rule disabled
+  PASS: lowestEfficiency
+[31mResult:FAIL [Total:3] [Passed:1] [Failed:1] [Warn:0] [Skipped:1][0m
+
+[Pipeline] sh
++ echo Trivy tool scan
+Trivy tool scan
++ sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+Reading package lists...
+Building dependency tree...
+Reading state information...
+lsb-release is already the newest version (11.1.0ubuntu4).
+wget is already the newest version (1.21.2-2ubuntu1).
+gnupg is already the newest version (2.2.27-3ubuntu2.1).
+apt-transport-https is already the newest version (2.4.8).
+The following packages were automatically installed and are no longer required:
+  libflashrom1 libftdi1-2
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
++ wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key
++ sudo apt-key add -
+Warning: apt-key is deprecated. Manage keyring files in trusted.gpg.d instead (see apt-key(8)).
+OK
++ sudo tee -a /etc/apt/sources.list.d/trivy.list
++ lsb_release -sc
++ echo deb https://aquasecurity.github.io/trivy-repo/deb jammy main
+deb https://aquasecurity.github.io/trivy-repo/deb jammy main
++ sudo apt-get update -y
+Hit:1 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy InRelease
+Hit:2 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-updates InRelease
+Hit:3 http://us-east-1.ec2.archive.ubuntu.com/ubuntu jammy-backports InRelease
+Hit:5 https://aquasecurity.github.io/trivy-repo/deb jammy InRelease
+Ign:4 https://pkg.jenkins.io/debian-stable binary/ InRelease
+Hit:6 https://pkg.jenkins.io/debian-stable binary/ Release
+Hit:7 http://security.ubuntu.com/ubuntu jammy-security InRelease
+Reading package lists...
+W: https://aquasecurity.github.io/trivy-repo/deb/dists/jammy/InRelease: Key is stored in legacy trusted.gpg keyring (/etc/apt/trusted.gpg), see the DEPRECATION section in apt-key(8) for details.
+W: Target Packages (main/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:2
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:2
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:2
+W: Target CNF (main/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:2
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:2
+W: Target Packages (main/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:3
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:3
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:3
+W: Target CNF (main/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:3
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:3
+W: Target Packages (main/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:4
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:4
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:4
+W: Target CNF (main/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:4
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:4
+W: Target Packages (main/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:2
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:2
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:2
+W: Target CNF (main/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:2
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:2
+W: Target Packages (main/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:3
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:3
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:3
+W: Target CNF (main/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:3
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:3
+W: Target Packages (main/binary-amd64/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:4
+W: Target Packages (main/binary-all/Packages) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:4
+W: Target Translations (main/i18n/Translation-en) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:4
+W: Target CNF (main/cnf/Commands-amd64) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:4
+W: Target CNF (main/cnf/Commands-all) is configured multiple times in /etc/apt/sources.list.d/trivy.list:1 and /etc/apt/sources.list.d/trivy.list:4
++ sudo apt-get install trivy -y
+Reading package lists...
+Building dependency tree...
+Reading state information...
+trivy is already the newest version (0.34.0).
+The following packages were automatically installed and are no longer required:
+  libflashrom1 libftdi1-2
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 6 not upgraded.
++ trivy image 498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest
+2022-11-13T13:54:15.022Z	[34mINFO[0m	Vulnerability scanning is enabled
+2022-11-13T13:54:15.022Z	[34mINFO[0m	Secret scanning is enabled
+2022-11-13T13:54:15.022Z	[34mINFO[0m	If your scanning is slow, please try '--security-checks vuln' to disable secret scanning
+2022-11-13T13:54:15.022Z	[34mINFO[0m	Please see also https://aquasecurity.github.io/trivy/v0.34/docs/secret/scanning/#recommendation for faster secret detection
+2022-11-13T13:54:15.072Z	[34mINFO[0m	Detected OS: debian
+2022-11-13T13:54:15.072Z	[34mINFO[0m	Detecting Debian vulnerabilities...
+2022-11-13T13:54:15.153Z	[34mINFO[0m	Number of language-specific files: 1
+2022-11-13T13:54:15.153Z	[34mINFO[0m	Detecting python-pkg vulnerabilities...
++ cat TrivyReport
+
+498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest (debian 11.5)
+==============================================================================
+Total: 99 (UNKNOWN: 0, LOW: 75, MEDIUM: 8, HIGH: 14, CRITICAL: 2)
+
+┌──────────────────┬──────────────────┬──────────┬───────────────────────┬──────────────────┬──────────────────────────────────────────────────────────────┐
+│     Library      │  Vulnerability   │ Severity │   Installed Version   │  Fixed Version   │                            Title                             │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ apt              │ CVE-2011-3374    │ LOW      │ 2.2.4                 │                  │ It was found that apt-key in apt, all versions, do not       │
+│                  │                  │          │                       │                  │ correctly...                                                 │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2011-3374                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ bash             │ CVE-2022-3715    │ MEDIUM   │ 5.1-2+deb11u1         │                  │ bash: a heap-buffer-overflow in valid_parameter_transform    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-3715                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ bsdutils         │ CVE-2022-0563    │ LOW      │ 2.36.1-8+deb11u1      │                  │ util-linux: partial disclosure of arbitrary files in chfn    │
+│                  │                  │          │                       │                  │ and chsh when compiled...                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-0563                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ coreutils        │ CVE-2016-2781    │          │ 8.32-4                │                  │ coreutils: Non-privileged session can escape to the parent   │
+│                  │                  │          │                       │                  │ session in chroot                                            │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2016-2781                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2017-18018   │          │                       │                  │ coreutils: race condition vulnerability in chown and chgrp   │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2017-18018                   │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ curl             │ CVE-2022-42916   │ HIGH     │ 7.74.0-1.3+deb11u3    │                  │ curl: HSTS bypass via IDN                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-42916                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2022-32221   │ MEDIUM   │                       │                  │ curl: POST following PUT confusion                           │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-32221                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-22922   │ LOW      │                       │                  │ curl: Content not matching hash in Metalink is not being     │
+│                  │                  │          │                       │                  │ discarded                                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-22922                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-22923   │          │                       │                  │ curl: Metalink download sends credentials                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-22923                   │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ e2fsprogs        │ CVE-2022-1304    │ HIGH     │ 1.46.2-2              │                  │ e2fsprogs: out-of-bounds read/write via crafted filesystem   │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-1304                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libapt-pkg6.0    │ CVE-2011-3374    │ LOW      │ 2.2.4                 │                  │ It was found that apt-key in apt, all versions, do not       │
+│                  │                  │          │                       │                  │ correctly...                                                 │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2011-3374                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libblkid1        │ CVE-2022-0563    │          │ 2.36.1-8+deb11u1      │                  │ util-linux: partial disclosure of arbitrary files in chfn    │
+│                  │                  │          │                       │                  │ and chsh when compiled...                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-0563                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libc-bin         │ CVE-2010-4756    │          │ 2.31-13+deb11u5       │                  │ glibc: glob implementation can cause excessive CPU and       │
+│                  │                  │          │                       │                  │ memory consumption due to...                                 │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2010-4756                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2018-20796   │          │                       │                  │ glibc: uncontrolled recursion in function                    │
+│                  │                  │          │                       │                  │ check_dst_limits_calc_pos_1 in posix/regexec.c               │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2018-20796                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-1010022 │          │                       │                  │ glibc: stack guard protection bypass                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-1010022                 │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-1010023 │          │                       │                  │ glibc: running ldd on malicious ELF leads to code execution  │
+│                  │                  │          │                       │                  │ because of...                                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-1010023                 │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-1010024 │          │                       │                  │ glibc: ASLR bypass using cache of thread stack and heap      │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-1010024                 │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-1010025 │          │                       │                  │ glibc: information disclosure of heap addresses of           │
+│                  │                  │          │                       │                  │ pthread_created thread                                       │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-1010025                 │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-9192    │          │                       │                  │ glibc: uncontrolled recursion in function                    │
+│                  │                  │          │                       │                  │ check_dst_limits_calc_pos_1 in posix/regexec.c               │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-9192                    │
+├──────────────────┼──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libc6            │ CVE-2010-4756    │          │                       │                  │ glibc: glob implementation can cause excessive CPU and       │
+│                  │                  │          │                       │                  │ memory consumption due to...                                 │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2010-4756                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2018-20796   │          │                       │                  │ glibc: uncontrolled recursion in function                    │
+│                  │                  │          │                       │                  │ check_dst_limits_calc_pos_1 in posix/regexec.c               │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2018-20796                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-1010022 │          │                       │                  │ glibc: stack guard protection bypass                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-1010022                 │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-1010023 │          │                       │                  │ glibc: running ldd on malicious ELF leads to code execution  │
+│                  │                  │          │                       │                  │ because of...                                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-1010023                 │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-1010024 │          │                       │                  │ glibc: ASLR bypass using cache of thread stack and heap      │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-1010024                 │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-1010025 │          │                       │                  │ glibc: information disclosure of heap addresses of           │
+│                  │                  │          │                       │                  │ pthread_created thread                                       │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-1010025                 │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-9192    │          │                       │                  │ glibc: uncontrolled recursion in function                    │
+│                  │                  │          │                       │                  │ check_dst_limits_calc_pos_1 in posix/regexec.c               │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-9192                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libcom-err2      │ CVE-2022-1304    │ HIGH     │ 1.46.2-2              │                  │ e2fsprogs: out-of-bounds read/write via crafted filesystem   │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-1304                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libcurl4         │ CVE-2022-42916   │          │ 7.74.0-1.3+deb11u3    │                  │ curl: HSTS bypass via IDN                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-42916                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2022-32221   │ MEDIUM   │                       │                  │ curl: POST following PUT confusion                           │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-32221                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-22922   │ LOW      │                       │                  │ curl: Content not matching hash in Metalink is not being     │
+│                  │                  │          │                       │                  │ discarded                                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-22922                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-22923   │          │                       │                  │ curl: Metalink download sends credentials                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-22923                   │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libdb5.3         │ CVE-2019-8457    │ CRITICAL │ 5.3.28+dfsg1-0.8      │                  │ sqlite: heap out-of-bound read in function rtreenode()       │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-8457                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libexpat1        │ CVE-2022-43680   │ HIGH     │ 2.2.10-2+deb11u4      │ 2.2.10-2+deb11u5 │ expat: use-after free caused by overeager destruction of a   │
+│                  │                  │          │                       │                  │ shared DTD in...                                             │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-43680                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2013-0340    │ LOW      │                       │                  │ expat: internal entity expansion                             │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2013-0340                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libext2fs2       │ CVE-2022-1304    │ HIGH     │ 1.46.2-2              │                  │ e2fsprogs: out-of-bounds read/write via crafted filesystem   │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-1304                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libgcrypt20      │ CVE-2021-33560   │          │ 1.8.7-6               │                  │ libgcrypt: mishandles ElGamal encryption because it lacks    │
+│                  │                  │          │                       │                  │ exponent blinding to address a...                            │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-33560                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2018-6829    │ LOW      │                       │                  │ libgcrypt: ElGamal implementation doesn't have semantic      │
+│                  │                  │          │                       │                  │ security due to incorrectly encoded plaintexts...            │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2018-6829                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libgnutls30      │ CVE-2011-3389    │          │ 3.7.1-5+deb11u2       │                  │ HTTPS: block-wise chosen-plaintext attack against SSL/TLS    │
+│                  │                  │          │                       │                  │ (BEAST)                                                      │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2011-3389                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libgssapi-krb5-2 │ CVE-2004-0971    │          │ 1.18.3-6+deb11u2      │                  │ security flaw                                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2004-0971                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2018-5709    │          │                       │                  │ krb5: integer overflow in dbentry->n_key_data in             │
+│                  │                  │          │                       │                  │ kadmin/dbutil/dump.c                                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2018-5709                    │
+├──────────────────┼──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libk5crypto3     │ CVE-2004-0971    │          │                       │                  │ security flaw                                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2004-0971                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2018-5709    │          │                       │                  │ krb5: integer overflow in dbentry->n_key_data in             │
+│                  │                  │          │                       │                  │ kadmin/dbutil/dump.c                                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2018-5709                    │
+├──────────────────┼──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libkrb5-3        │ CVE-2004-0971    │          │                       │                  │ security flaw                                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2004-0971                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2018-5709    │          │                       │                  │ krb5: integer overflow in dbentry->n_key_data in             │
+│                  │                  │          │                       │                  │ kadmin/dbutil/dump.c                                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2018-5709                    │
+├──────────────────┼──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libkrb5support0  │ CVE-2004-0971    │          │                       │                  │ security flaw                                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2004-0971                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2018-5709    │          │                       │                  │ krb5: integer overflow in dbentry->n_key_data in             │
+│                  │                  │          │                       │                  │ kadmin/dbutil/dump.c                                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2018-5709                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libldap-2.4-2    │ CVE-2015-3276    │          │ 2.4.57+dfsg-3+deb11u1 │                  │ openldap: incorrect multi-keyword mode cipherstring parsing  │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2015-3276                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2017-14159   │          │                       │                  │ openldap: Privilege escalation via PID file manipulation     │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2017-14159                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2017-17740   │          │                       │                  │ openldap: contrib/slapd-modules/nops/nops.c attempts to free │
+│                  │                  │          │                       │                  │ stack buffer allowing remote attackers to cause...           │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2017-17740                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2020-15719   │          │                       │                  │ openldap: Certificate validation incorrectly matches name    │
+│                  │                  │          │                       │                  │ against CN-ID                                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2020-15719                   │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libmount1        │ CVE-2022-0563    │          │ 2.36.1-8+deb11u1      │                  │ util-linux: partial disclosure of arbitrary files in chfn    │
+│                  │                  │          │                       │                  │ and chsh when compiled...                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-0563                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libncursesw6     │ CVE-2022-29458   │ HIGH     │ 6.2+20201114-2        │                  │ ncurses: segfaulting OOB read                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-29458                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-39537   │ LOW      │                       │                  │ ncurses: heap-based buffer overflow in _nc_captoinfo() in    │
+│                  │                  │          │                       │                  │ captoinfo.c                                                  │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-39537                   │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libpcre3         │ CVE-2017-11164   │          │ 2:8.39-13             │                  │ pcre: OP_KETRMAX feature in the match function in            │
+│                  │                  │          │                       │                  │ pcre_exec.c                                                  │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2017-11164                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2017-16231   │          │                       │                  │ pcre: self-recursive call in match() in pcre_exec.c leads to │
+│                  │                  │          │                       │                  │ denial of service...                                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2017-16231                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2017-7245    │          │                       │                  │ pcre: stack-based buffer overflow write in                   │
+│                  │                  │          │                       │                  │ pcre32_copy_substring                                        │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2017-7245                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2017-7246    │          │                       │                  │ pcre: stack-based buffer overflow write in                   │
+│                  │                  │          │                       │                  │ pcre32_copy_substring                                        │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2017-7246                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-20838   │          │                       │                  │ pcre: Buffer over-read in JIT when UTF is disabled and \X    │
+│                  │                  │          │                       │                  │ or...                                                        │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-20838                   │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libsepol1        │ CVE-2021-36084   │          │ 3.1-1                 │                  │ libsepol: use-after-free in __cil_verify_classperms()        │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-36084                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-36085   │          │                       │                  │ libsepol: use-after-free in __cil_verify_classperms()        │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-36085                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-36086   │          │                       │                  │ libsepol: use-after-free in cil_reset_classpermission()      │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-36086                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-36087   │          │                       │                  │ libsepol: heap-based buffer overflow in ebitmap_match_any()  │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-36087                   │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libsmartcols1    │ CVE-2022-0563    │          │ 2.36.1-8+deb11u1      │                  │ util-linux: partial disclosure of arbitrary files in chfn    │
+│                  │                  │          │                       │                  │ and chsh when compiled...                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-0563                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libsqlite3-0     │ CVE-2021-45346   │ MEDIUM   │ 3.34.1-3              │                  │ sqlite: crafted SQL query allows a malicious user to obtain  │
+│                  │                  │          │                       │                  │ sensitive information...                                     │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-45346                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-36690   │ LOW      │                       │                  │ ** DISPUTED ** A segmentation fault can occur in the         │
+│                  │                  │          │                       │                  │ sqlite3.exe comma...                                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-36690                   │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2022-35737   │          │                       │                  │ sqlite: an array-bounds overflow if billions of bytes are    │
+│                  │                  │          │                       │                  │ used in a...                                                 │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-35737                   │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libss2           │ CVE-2022-1304    │ HIGH     │ 1.46.2-2              │                  │ e2fsprogs: out-of-bounds read/write via crafted filesystem   │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-1304                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libssl1.1        │ CVE-2022-2097    │ MEDIUM   │ 1.1.1n-0+deb11u3      │                  │ openssl: AES OCB fails to encrypt some bytes                 │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-2097                    │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2007-6755    │ LOW      │                       │                  │ Dual_EC_DRBG: weak pseudo random number generator            │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2007-6755                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2010-0928    │          │                       │                  │ openssl: RSA authentication weakness                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2010-0928                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libsystemd0      │ CVE-2022-3821    │ MEDIUM   │ 247.3-7+deb11u1       │                  │ systemd: buffer overrun in format_timespan() function.       │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-3821                    │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2013-4392    │ LOW      │                       │                  │ systemd: TOCTOU race condition when updating file            │
+│                  │                  │          │                       │                  │ permissions and SELinux security contexts...                 │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2013-4392                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2020-13529   │          │                       │                  │ systemd: DHCP FORCERENEW authentication not implemented can  │
+│                  │                  │          │                       │                  │ cause a system running the...                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2020-13529                   │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libtasn1-6       │ CVE-2021-46848   │ CRITICAL │ 4.16.0-2              │                  │ libtasn1: Out-of-bound access in ETYPE_OK                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-46848                   │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libtinfo6        │ CVE-2022-29458   │ HIGH     │ 6.2+20201114-2        │                  │ ncurses: segfaulting OOB read                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-29458                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-39537   │ LOW      │                       │                  │ ncurses: heap-based buffer overflow in _nc_captoinfo() in    │
+│                  │                  │          │                       │                  │ captoinfo.c                                                  │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-39537                   │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libudev1         │ CVE-2022-3821    │ MEDIUM   │ 247.3-7+deb11u1       │                  │ systemd: buffer overrun in format_timespan() function.       │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-3821                    │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2013-4392    │ LOW      │                       │                  │ systemd: TOCTOU race condition when updating file            │
+│                  │                  │          │                       │                  │ permissions and SELinux security contexts...                 │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2013-4392                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2020-13529   │          │                       │                  │ systemd: DHCP FORCERENEW authentication not implemented can  │
+│                  │                  │          │                       │                  │ cause a system running the...                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2020-13529                   │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ libuuid1         │ CVE-2022-0563    │          │ 2.36.1-8+deb11u1      │                  │ util-linux: partial disclosure of arbitrary files in chfn    │
+│                  │                  │          │                       │                  │ and chsh when compiled...                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-0563                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ login            │ CVE-2007-5686    │          │ 1:4.8.1-1             │                  │ initscripts in rPath Linux 1 sets insecure permissions for   │
+│                  │                  │          │                       │                  │ the /var/lo ......                                           │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2007-5686                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2013-4235    │          │                       │                  │ shadow-utils: TOCTOU race conditions by copying and removing │
+│                  │                  │          │                       │                  │ directory trees                                              │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2013-4235                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-19882   │          │                       │                  │ shadow-utils: local users can obtain root access because     │
+│                  │                  │          │                       │                  │ setuid programs are misconfigured...                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-19882                   │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ logsave          │ CVE-2022-1304    │ HIGH     │ 1.46.2-2              │                  │ e2fsprogs: out-of-bounds read/write via crafted filesystem   │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-1304                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ mount            │ CVE-2022-0563    │ LOW      │ 2.36.1-8+deb11u1      │                  │ util-linux: partial disclosure of arbitrary files in chfn    │
+│                  │                  │          │                       │                  │ and chsh when compiled...                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-0563                    │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ ncurses-base     │ CVE-2022-29458   │ HIGH     │ 6.2+20201114-2        │                  │ ncurses: segfaulting OOB read                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-29458                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-39537   │ LOW      │                       │                  │ ncurses: heap-based buffer overflow in _nc_captoinfo() in    │
+│                  │                  │          │                       │                  │ captoinfo.c                                                  │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-39537                   │
+├──────────────────┼──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│ ncurses-bin      │ CVE-2022-29458   │ HIGH     │                       │                  │ ncurses: segfaulting OOB read                                │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-29458                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2021-39537   │ LOW      │                       │                  │ ncurses: heap-based buffer overflow in _nc_captoinfo() in    │
+│                  │                  │          │                       │                  │ captoinfo.c                                                  │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2021-39537                   │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ openssl          │ CVE-2022-2097    │ MEDIUM   │ 1.1.1n-0+deb11u3      │                  │ openssl: AES OCB fails to encrypt some bytes                 │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-2097                    │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2007-6755    │ LOW      │                       │                  │ Dual_EC_DRBG: weak pseudo random number generator            │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2007-6755                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2010-0928    │          │                       │                  │ openssl: RSA authentication weakness                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2010-0928                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ passwd           │ CVE-2007-5686    │          │ 1:4.8.1-1             │                  │ initscripts in rPath Linux 1 sets insecure permissions for   │
+│                  │                  │          │                       │                  │ the /var/lo ......                                           │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2007-5686                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2013-4235    │          │                       │                  │ shadow-utils: TOCTOU race conditions by copying and removing │
+│                  │                  │          │                       │                  │ directory trees                                              │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2013-4235                    │
+│                  ├──────────────────┤          │                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2019-19882   │          │                       │                  │ shadow-utils: local users can obtain root access because     │
+│                  │                  │          │                       │                  │ setuid programs are misconfigured...                         │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2019-19882                   │
+├──────────────────┼──────────────────┼──────────┼───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ perl-base        │ CVE-2020-16156   │ HIGH     │ 5.32.1-4+deb11u2      │                  │ perl-CPAN: Bypass of verification of signatures in CHECKSUMS │
+│                  │                  │          │                       │                  │ files                                                        │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2020-16156                   │
+│                  ├──────────────────┼──────────┤                       ├──────────────────┼──────────────────────────────────────────────────────────────┤
+│                  │ CVE-2011-4116    │ LOW      │                       │                  │ perl: File::Temp insecure temporary file handling            │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2011-4116                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ tar              │ CVE-2005-2541    │          │ 1.34+dfsg-1           │                  │ tar: does not properly warn the user when extracting setuid  │
+│                  │                  │          │                       │                  │ or setgid...                                                 │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2005-2541                    │
+├──────────────────┼──────────────────┤          ├───────────────────────┼──────────────────┼──────────────────────────────────────────────────────────────┤
+│ util-linux       │ CVE-2022-0563    │          │ 2.36.1-8+deb11u1      │                  │ util-linux: partial disclosure of arbitrary files in chfn    │
+│                  │                  │          │                       │                  │ and chsh when compiled...                                    │
+│                  │                  │          │                       │                  │ https://avd.aquasec.com/nvd/cve-2022-0563                    │
+└──────────────────┴──────────────────┴──────────┴───────────────────────┴──────────────────┴──────────────────────────────────────────────────────────────┘
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Tests)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ echo Functional Tests
+Functional Tests
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (Depolyment)
+[Pipeline] tool
+[Pipeline] envVarsForTool
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] sh
++ echo ----------------------------------------------------
+		  
+		  Docker Swarm Depolyment
+		  
+		  ----------------------------------------------------------
+----------------------------------------------------
+		  
+		  Docker Swarm Depolyment
+		  
+		  ----------------------------------------------------------
++ docker info
+Client:
+ Context:    default
+ Debug Mode: false
+
+Server:
+ Containers: 3
+  Running: 3
+  Paused: 0
+  Stopped: 0
+ Images: 9
+ Server Version: 20.10.12
+ Storage Driver: overlay2
+  Backing Filesystem: extfs
+  Supports d_type: true
+  Native Overlay Diff: true
+  userxattr: false
+ Logging Driver: json-file
+ Cgroup Driver: systemd
+ Cgroup Version: 2
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local logentries splunk syslog
+ Swarm: active
+  NodeID: 2jt91ykn8b4s1wt9djdbukcqd
+  Is Manager: true
+  ClusterID: ze2q161r1jj2vkrigx6phlfym
+  Managers: 1
+  Nodes: 1
+  Default Address Pool: 10.0.0.0/8  
+  SubnetSize: 24
+  Data Path Port: 4789
+  Orchestration:
+   Task History Retention Limit: 5
+  Raft:
+   Snapshot Interval: 10000
+   Number of Old Snapshots to Retain: 0
+   Heartbeat Tick: 1
+   Election Tick: 10
+  Dispatcher:
+   Heartbeat Period: 5 seconds
+  CA Configuration:
+   Expiry Duration: 3 months
+   Force Rotate: 0
+  Autolock Managers: false
+  Root Rotation In Progress: false
+  Node Address: 172.31.90.195
+  Manager Addresses:
+   172.31.90.195:2377
+ Runtimes: io.containerd.runc.v2 io.containerd.runtime.v1.linux runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 
+ runc version: 
+ init version: 
+ Security Options:
+  apparmor
+  seccomp
+   Profile: default
+  cgroupns
+ Kernel Version: 5.15.0-1022-aws
+ Operating System: Ubuntu 22.04.1 LTS
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 2
+ Total Memory: 3.829GiB
+ Name: ip-172-31-90-195
+ ID: XLP3:QKA6:YK56:BZAI:DFPJ:UEMB:XE4Y:W323:HFI3:4ASM:K7SB:33DH
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ Registry: https://index.docker.io/v1/
+ Labels:
+ Experimental: false
+ Insecure Registries:
+  127.0.0.0/8
+ Live Restore Enabled: false
+
++ docker service update --image 498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest vote
+image 498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest could not be accessed on a registry to record
+its digest. Each node will access 498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest independently,
+possibly leading to different nodes running different
+versions of the image.
+
+vote
+overall progress: 0 out of 2 tasks
+1/2:  
+2/2:  
+overall progress: 2 out of 2 tasks
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 5 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 4 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 3 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 2 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Waiting 1 seconds to verify that tasks are stable...
+verify: Service converged
++ docker service inspect --pretty vote
+
+ID:		wbclkzr91bznaj7v9v97tj7qb
+Name:		vote
+Service Mode:	Replicated
+ Replicas:	2
+Placement:
+UpdateConfig:
+ Parallelism:	1
+ On failure:	pause
+ Monitoring Period: 5s
+ Max failure ratio: 0
+ Update order:      stop-first
+RollbackConfig:
+ Parallelism:	1
+ On failure:	pause
+ Monitoring Period: 5s
+ Max failure ratio: 0
+ Rollback order:    stop-first
+ContainerSpec:
+ Image:		498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest
+ Init:		false
+Resources:
+Endpoint Mode:	vip
+
++ sleep 50
++ docker service ps vote
+ID             NAME         IMAGE                                                              NODE               DESIRED STATE   CURRENT STATE          ERROR                              PORTS
+m213qrpy77h1   vote.1       498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest   ip-172-31-90-195   Running         Running 2 hours ago                                       
+tjxqmnwgd86c    \_ vote.1   498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest   ip-172-31-90-195   Shutdown        Failed 2 hours ago     "No such container: vote.1.tjx…"   
+fqeyurtexk9l    \_ vote.1   498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest   ip-172-31-90-195   Shutdown        Complete 2 hours ago                                      
+r109a60e3pq7   vote.2       498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest   ip-172-31-90-195   Running         Running 2 hours ago                                       
+lckizif8eqoh    \_ vote.2   498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest   ip-172-31-90-195   Shutdown        Failed 2 hours ago     "No such container: vote.2.lck…"   
+si7ok3abcthh    \_ vote.2   498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest   ip-172-31-90-195   Shutdown        Complete 2 hours ago                                      
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
