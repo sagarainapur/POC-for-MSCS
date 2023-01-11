@@ -69,14 +69,14 @@ pipeline{
                   	docker push ${docker_repo_uri}:latest
 		
                   	#Clean up
-                  	#docker rmi -f ${docker_repo_uri}:latest
+                  	docker rmi -f ${docker_repo_uri}:latest
 		
 		   '''
 	      }
 	}
 	
 	
-	stage('Docker Security Scans') {
+	stage('Docker Bench for Security Scans') {
 	     steps {
         	   
 		  // Docker Bench for Security
@@ -101,7 +101,13 @@ pipeline{
 			\n
 		
 		   '''
-		     
+	     }
+	}
+		
+		
+		
+	stage('Dive Scans') {
+	     steps {
 		     
 		  // Dive tool
 		  sh '''
@@ -118,6 +124,13 @@ pipeline{
 			\n
 			
 		  '''
+	     }
+	}
+		
+		
+		
+	stage('Trivy Scans') {
+	     steps {
 		     
 		  
 		  // Trivy tool
@@ -155,7 +168,8 @@ pipeline{
 	      }
 	}
 	
-	stage('Depolyment') {
+	stage('Swarm Depolyment') {
+		
 	     steps {
                   sh '''
 		  
