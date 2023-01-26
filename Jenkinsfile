@@ -21,7 +21,7 @@ pipeline{
         
        stage('GetCode'){
             steps{
-                git branch: 'cicd_docker_swarm', url: 'https://github.com/sagarainapur/POC-for-MSCS.git'
+                git branch: 'cicd_ecs', url: 'https://github.com/sagarainapur/POC-for-MSCS.git'
             }
        }
         
@@ -116,7 +116,7 @@ pipeline{
 	      }
 	}
 	
-	stage('Swarm Depolyment') {
+	stage('ECS Depolyment') {
 		
 	     steps {
                   sh '''
