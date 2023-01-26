@@ -138,7 +138,7 @@ pipeline{
         	// Create a new task definition revision
         	sh "aws ecs register-task-definition --execution-role-arn ${exec_role_arn} --cli-input-json file://taskdef.json --region ${region}"
         	// Update service on Fargate
-        	sh "aws ecs update-service --cluster ${cluster} --service sample-app-service --task-definition ${task_def_arn} --region ${region}"
+        	sh "aws ecs update-service --cluster ${cluster} --service vote --task-definition ${task_def_arn} --region ${region}"
 	      }
 	}
         
