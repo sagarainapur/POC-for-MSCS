@@ -12,9 +12,11 @@ pipeline{
         	docker_repo_uri = "498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages"
 	    	docker_image = "498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages:latest"
 	    	
-		//task_def_arn = "arn:aws:ecs:us-east-1:407730735276:task-definition/first-run-task-definition:10"
-        	//cluster = "CICD"
-        	//exec_role_arn = "arn:aws:iam::407730735276:role/ecsTaskExecutionRole"
+		// ECS environment variables
+	    	
+		task_def_arn = "arn:aws:ecs:us-east-1:407730735276:task-definition/first-run-task-definition:10"
+        	cluster = "CICD"
+        	exec_role_arn = "arn:aws:iam::407730735276:role/ecsTaskExecutionRole"
     }
     
     stages{
@@ -52,21 +54,38 @@ pipeline{
                   sh '''
 		                
 		  	cd vote/
-			      
+			
+			// Build the Docker image
+        		docker build -t ${docker_repo_uri}:${commit_id} .
+						
+        		// Get Docker login credentials for ECR
+        		aws ecr get-login --no-include-email --region ${region} | sh
+			
+        		// Push Docker image
+        		docker push ${docker_repo_uri}:${commit_id}"
+			
+        		// Clean up
+        		docker rmi -f ${docker_repo_uri}:${commit_id}
+			
+			echo "Doen"
+			
+			
+			
+			
 			#aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 498747127127.dkr.ecr.us-east-1.amazonaws.com
 		
-		        docker build -t ${docker_repo_uri}:latest .
+		        //docker build -t ${docker_repo_uri}:latest .
 		
                   	# Get Docker login credentials for ECR
-                  	aws ecr get-login --no-include-email --region ${region} | sh
+                  	//aws ecr get-login --no-include-email --region ${region} | sh
 		
                   	# Push Docker image
-                  	docker push ${docker_repo_uri}:latest
+                  	//docker push ${docker_repo_uri}:latest
 		
                   	#Clean up
-                  	docker rmi -f ${docker_repo_uri}:latest
+                  	//docker rmi -f ${docker_repo_uri}:latest
 		
-		   '''
+		   ''' 
 	      }
 	}
 	
@@ -118,7 +137,7 @@ pipeline{
 		  
 		  echo "----------------------------------------------------
 		  
-		  Docker Swarm Depolyment
+		  AWS ECS Depolyment
 		  
 		  ----------------------------------------------------------"
 		  
