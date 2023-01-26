@@ -60,20 +60,20 @@ pipeline{
 			chmod +x Dockerfile app.py requirements.txt
 			
 			ls -lash
-			//cd /var/lib/jenkins/workspace/CICD_ECS@tmp/durable-280cb0c1/
+			#cd /var/lib/jenkins/workspace/CICD_ECS@tmp/durable-280cb0c1/
 			
 			chmod +x script.sh
 			
-			// Build the Docker image
+			# Build the Docker image
         		docker build -t ${docker_repo_uri}:${commit_id} .
 						
-        		// Get Docker login credentials for ECR
+        		# Get Docker login credentials for ECR
         		aws ecr get-login --no-include-email --region ${region} | sh
 			
-        		// Push Docker image
+        		# Push Docker image
         		docker push ${docker_repo_uri}:${commit_id}"
 			
-        		// Clean up
+        		# Clean up
         		docker rmi -f ${docker_repo_uri}:${commit_id}
 			
 			echo "Doen"
