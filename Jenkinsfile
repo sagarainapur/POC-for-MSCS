@@ -14,9 +14,10 @@ pipeline{
 	    	
 		// ECS environment variables
 	    	
-		task_def_arn = "arn:aws:ecs:us-east-1:407730735276:task-definition/first-run-task-definition:10"
+		//task_def_arn = "arn:aws:ecs:us-east-1:407730735276:task-definition/first-run-task-definition:10"
+	    	task_def_arn = "arn:aws:ecs:us-east-1:498747127127:task-definition/vote:1"
         	cluster = "CICD_ECS"
-        	exec_role_arn = "arn:aws:iam::407730735276:role/ecsTaskExecutionRole"
+        	exec_role_arn = "arn:aws:iam::498747127127:role/ecsTaskExecutionRole"
     }
     
     stages{
@@ -133,7 +134,7 @@ pipeline{
 	     steps {
 
 		// Override image field in taskdef file
-        	sh "sed -i 's|{{image}}|${docker_repo_uri}:${commit_id}|' taskdef.json"
+        	sh "sed -i 's|{{image}}|${docker_repo_uri}:latest |' taskdef.json"
         	// Create a new task definition revision
         	sh "aws ecs register-task-definition --execution-role-arn ${exec_role_arn} --cli-input-json file://taskdef.json --region ${region}"
         	// Update service on Fargate
