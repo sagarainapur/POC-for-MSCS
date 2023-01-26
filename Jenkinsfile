@@ -60,7 +60,7 @@ pipeline{
 			chmod +x Dockerfile app.py requirements.txt
 			
 			ls -lash
-			#cd /var/lib/jenkins/workspace/CICD_ECS@tmp/durable-280cb0c1/
+			cd /var/lib/jenkins/workspace/CICD_ECS@tmp/durable-280cb0c1/
 			
 			chmod +x script.sh
 			
