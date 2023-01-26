@@ -63,7 +63,7 @@ pipeline{
 			ls -lash
 			##cd /var/lib/jenkins/workspace/CICD_ECS@tmp/durable-280cb0c1/
 			
-			chmod +x script.sh
+			#chmod +x script.sh
 			
 			# Build the Docker image
         		docker build -t ${docker_repo_uri}:${commit_id} .
@@ -80,20 +80,6 @@ pipeline{
 			echo "Doen"
 			
 			
-			
-			
-			#aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 498747127127.dkr.ecr.us-east-1.amazonaws.com
-		
-		        //docker build -t ${docker_repo_uri}:latest .
-		
-                  	# Get Docker login credentials for ECR
-                  	//aws ecr get-login --no-include-email --region ${region} | sh
-		
-                  	# Push Docker image
-                  	//docker push ${docker_repo_uri}:latest
-		
-                  	#Clean up
-                  	//docker rmi -f ${docker_repo_uri}:latest
 		
 		   ''' 
 	      }
