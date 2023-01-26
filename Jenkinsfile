@@ -52,7 +52,8 @@ pipeline{
         	   }
                   // Build the Docker image
                   sh '''
-		                
+		        ls -lash
+			
 		  	cd vote/
 			
 			ls -lash
