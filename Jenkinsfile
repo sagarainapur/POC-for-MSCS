@@ -59,6 +59,7 @@ pipeline{
 			
 			chmod +x Dockerfile app.py requirements.txt
 			
+			ls -lash
 			
 			// Build the Docker image
         		docker build -t ${docker_repo_uri}:${commit_id} .
