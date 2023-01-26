@@ -21,7 +21,7 @@ pipeline{
         
        stage('GetCode'){
             steps{
-                git branch: 'main', url: 'https://github.com/sagarainapur/POC-for-MSCS.git'
+                git branch: 'cicd_docker_swarm', url: 'https://github.com/sagarainapur/POC-for-MSCS.git'
             }
        }
         
@@ -75,58 +75,6 @@ pipeline{
 	      }
 	}
 	
-	
-	stage('Docker Bench for Security Scans') {
-	     steps {
-        	   
-		  // Docker Bench for Security
-		  sh '''
-		  
-		  			  
-		  	echo "Docker Security Scans"
-
-		  	#sudo apt-get install git -y
-			
-		  	#git clone https://github.com/docker/docker-bench-security.git
-		  	cd docker-bench-security
-			
-			rm Dockerfile
-			cp ../vote/Dockerfile .
-		  
-		  	sudo sh docker-bench-security.sh > DSSReport
-		  	#sh docker-bench-security.sh
-			
-			\n
-			cat DSSReport
-			\n
-		
-		   '''
-	     }
-	}
-		
-		
-		
-	stage('Dive Scans') {
-	     steps {
-		     
-		  // Dive tool
-		  sh '''
-		  			  
-		  	echo "Dive tool scan"
-
-			#wget https://github.com/wagoodman/dive/releases/download/v0.9.2/dive_0.9.2_linux_amd64.deb
-			#sudo apt install ./dive_0.9.2_linux_amd64.deb
-			
-			#dive 498747127127.dkr.ecr.us-east-1.amazonaws.com/dockerimages > DiveReport
-			
-			\n
-			cat DiveReport
-			\n
-			
-		  '''
-	     }
-	}
-		
 		
 		
 	stage('Trivy Scans') {
