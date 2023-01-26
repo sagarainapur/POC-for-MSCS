@@ -66,7 +66,8 @@ pipeline{
 			#chmod +x script.sh
 			
 			# Build the Docker image
-        		docker build -t ${docker_repo_uri}:${commit_id} .
+        		#docker build -t ${docker_repo_uri}:${commit_id} .
+			docker build -t ${docker_repo_uri}:latest .
 						
         		# Get Docker login credentials for ECR
         		aws ecr get-login --no-include-email --region ${region} | sh
