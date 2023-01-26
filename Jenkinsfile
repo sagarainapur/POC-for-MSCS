@@ -24,13 +24,8 @@ pipeline{
                 git branch: 'cicd_ecs', url: 'https://github.com/sagarainapur/POC-for-MSCS.git'
             }
        }
-        
-       stage('Build'){
-            steps{
-                sh 'mvn clean package'
-            }
-       }
-        
+       
+	
        stage('SonarQube analysis') {
             //def scannerHome = tool 'SonarScanner 4.0';
             steps{
