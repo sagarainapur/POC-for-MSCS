@@ -25,11 +25,6 @@ pipeline{
             }
        }
         
-       stage('Build'){
-            steps{
-                sh 'mvn clean package'
-            }
-       }
         
        stage('SonarQube analysis') {
             //def scannerHome = tool 'SonarScanner 4.0';
