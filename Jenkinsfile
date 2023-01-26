@@ -15,7 +15,7 @@ pipeline{
 		// ECS environment variables
 	    	
 		task_def_arn = "arn:aws:ecs:us-east-1:407730735276:task-definition/first-run-task-definition:10"
-        	cluster = "CICD"
+        	cluster = "CICD_ECS"
         	exec_role_arn = "arn:aws:iam::407730735276:role/ecsTaskExecutionRole"
     }
     
@@ -136,29 +136,13 @@ pipeline{
 	stage('ECS Depolyment') {
 		
 	     steps {
-                  sh '''
-		  
-		  echo "----------------------------------------------------
-		  
-		  AWS ECS Depolyment
-		  
-		  ----------------------------------------------------------"
-		  
-		  #docker swarm init --advertise-addr 172.31.90.195
-		  
-		  docker info
-		  
-		  #docker service create --name vote --replicas=1 $docker_image
-		  
-		  #docker service update --repicas=2 --image $docker_image vote
-		  
-		  docker service inspect --pretty vote
-		  
-		  sleep 30
-		  
-		  docker service ps vote
-		  
-		  '''
+
+		// Override image field in taskdef file
+        	sh "sed -i 's|{{image}}|${docker_repo_uri}:${commit_id}|' taskdef.json"
+        	// Create a new task definition revision
+        	sh "aws ecs register-task-definition --execution-role-arn ${exec_role_arn} --cli-input-json file://taskdef.json --region ${region}"
+        	// Update service on Fargate
+        	sh "aws ecs update-service --cluster ${cluster} --service sample-app-service --task-definition ${task_def_arn} --region ${region}"
 	      }
 	}
         
