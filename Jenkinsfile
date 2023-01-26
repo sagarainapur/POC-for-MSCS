@@ -134,7 +134,7 @@ pipeline{
 	     steps {
 
 		// Override image field in taskdef file
-        	sh "sed -i 's|{{image}}|${docker_repo_uri}:latest |' taskdef.json"
+        	sh "sed -i 's|{{image}}|${docker_repo_uri}:latest|' taskdef.json"
         	// Create a new task definition revision
         	sh "aws ecs register-task-definition --execution-role-arn ${exec_role_arn} --cli-input-json file://taskdef.json --region ${region}"
         	// Update service on Fargate
