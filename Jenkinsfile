@@ -15,7 +15,7 @@ pipeline{
 		// ECS environment variables
 	    	
 		//task_def_arn = "arn:aws:ecs:us-east-1:407730735276:task-definition/first-run-task-definition:10"
-	    	task_def_arn = "arn:aws:ecs:us-east-1:498747127127:task-definition/first-run-task-definition:6"
+	    	task_def_arn = "arn:aws:ecs:us-east-1:498747127127:task-definition/vote:1"
         	cluster = "CICD_ECS"
         	exec_role_arn = "arn:aws:iam::498747127127:role/ecsTaskExecutionRole"
     }
