@@ -130,7 +130,7 @@ pipeline{
 		  
 		  #sleep 60
 		  
-		  docker service update --replicas=2 vote
+		  #docker service update --replicas=2 vote
 		  
 		  docker service inspect --pretty vote
 		  
