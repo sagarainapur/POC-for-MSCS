@@ -34,7 +34,7 @@ pipeline{
                 //sh "${scannerHome}/bin/sonar-scanner"
                 //sh "mvn clean verify sonar:sonar -Dsonar.projectKey=demo-app -Dsonar.host.url=http://107.22.241.117:9000 -Dsonar.login=sqp_e2ba3b07b8fe290f9235c068c949e58b18f5d0e6"
                 
-		sh "mvn clean verify sonar:sonar -Dsonar.projectKey=CICD -Dsonar.host.url=http://52.5.131.155:9000 -Dsonar.login=sqp_34f6fa6d0f87e3cd2a9626a6f17cdbb1489936e8"
+		sh "mvn clean verify sonar:sonar -Dsonar.projectKey=CICD -Dsonar.host.url=http://52.5.131.155:9000 -Dsonar.login=sqp_6c018a946c0729440463adbe15bd5b2bcd719365"
 		
 		
 		}
