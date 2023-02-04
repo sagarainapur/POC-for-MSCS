@@ -126,7 +126,7 @@ pipeline{
 		  
 		  docker info
 		  
-		  #docker service create --name vote $docker_image
+		  #docker service create --with-registry-auth --name vote $docker_image
 		  
 		  #sleep 60
 		  
