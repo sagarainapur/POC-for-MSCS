@@ -119,15 +119,6 @@ pipeline{
 	}
 	
 	
-	stage('Tests') {
-	     steps {
-                  sh '''
-		  
-		  echo "Functional Tests"
-		  
-		  '''
-	      }
-	}
 	
 	stage('ECS Depolyment') {
 		
