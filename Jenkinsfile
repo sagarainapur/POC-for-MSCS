@@ -101,15 +101,6 @@ pipeline{
 	}
 	
 	
-	stage('Tests') {
-	     steps {
-                  sh '''
-		  
-		  echo "Functional Tests"
-		  
-		  '''
-	      }
-	}
 	
 	stage('Swarm Depolyment') {
 		
