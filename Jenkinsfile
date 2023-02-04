@@ -126,7 +126,9 @@ pipeline{
 		  
 		  docker info
 		  
-		  #docker service create --name vote --replicas=1 $docker_image
+		  docker service create --name vote $docker_image
+		  
+		  sleep 60
 		  
 		  docker service update --replicas=2 --image $docker_image vote
 		  
