@@ -128,7 +128,7 @@ pipeline{
 		  
 		  #docker service create --name vote --replicas=1 $docker_image
 		  
-		  #docker service update --repicas=2 --image $docker_image vote
+		  docker service update --repicas=2 --image $docker_image vote
 		  
 		  docker service inspect --pretty vote
 		  
